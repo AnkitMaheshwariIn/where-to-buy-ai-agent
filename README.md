@@ -114,4 +114,4 @@ Contributions are welcome! Please open issues or submit PRs for improvements or 
 ---
 
 ## License
-This project is licensed under the MIT License.
+This is a private project owned by Ankit Maheshwari. All rights reserved. Unauthorized use, distribution, or modification is strictly prohibited.
