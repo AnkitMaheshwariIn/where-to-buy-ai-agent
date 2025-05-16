@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where To Buy API Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .docs-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .endpoint {
+            border-left: 4px solid #4a6ee0;
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+        .method {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get {
+            background-color: #61affe;
+            color: white;
+        }
+        pre {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #4a6ee0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container docs-container">
+        <h1 class="mb-4">Where To Buy API Documentation</h1>
+        <p class="lead">A web scraping API to find and compare product prices across multiple e-commerce platforms.</p>
+        
+        <div class="alert alert-info">
+            <strong>Base URL:</strong> <code>http://localhost:3000</code>
+        </div>
+        
+        <div class="alert alert-warning">
+            <strong>Authentication Required:</strong> All API endpoints require an API key. You can provide it as a query parameter <code>api_key</code> or as a header <code>X-API-Key</code>.
+            <br>
+            <strong>Default API Key:</strong> <code>where-to-buy-test-api-key</code> (for testing purposes only)
+        </div>
+        
+        <ul class="nav nav-pills mb-4" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="endpoints-tab" data-bs-toggle="tab" data-bs-target="#endpoints" type="button" role="tab" aria-controls="endpoints" aria-selected="true">Endpoints</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="authentication-tab" data-bs-toggle="tab" data-bs-target="#authentication" type="button" role="tab" aria-controls="authentication" aria-selected="false">Authentication</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rate-limiting-tab" data-bs-toggle="tab" data-bs-target="#rate-limiting" type="button" role="tab" aria-controls="rate-limiting" aria-selected="false">Rate Limiting</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab" aria-controls="examples" aria-selected="false">Examples</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="endpoints" role="tabpanel" aria-labelledby="endpoints-tab">
+                <div class="endpoint">
+                    <h3><span class="method get">GET</span> /search</h3>
+                    <p>Search for products across multiple e-commerce platforms.</p>
+                    
+                    <h5>Query Parameters</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Required</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>product</td>
+                                <td>string</td>
+                                <td>Yes</td>
+                                <td>The product name to search for</td>
+                            </tr>
+                            <tr>
+                                <td>api_key</td>
+                                <td>string</td>
+                                <td>Yes*</td>
+                                <td>Your API key (can also be provided via X-API-Key header)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h5>Response</h5>
+                    <pre><code class="language-json">{
+  "product": "iphone",
+  "timestamp": "2025-05-15T06:32:19.671Z",
+  "sources": {
+    "amazon": 5,
+    "flipkart": 2,
+    "meesho": 0,
+    "snapdeal": 3
+  },
+  "count": 10,
+  "results": [
+    {
+      "platform": "Amazon",
+      "title": "Apple iPhone 13 (128GB) - Midnight",
+      "price": "₹52,999",
+      "link": "https://www.amazon.in/product-url"
+    },
+    {
+      "platform": "Flipkart",
+      "title": "APPLE iPhone 13 (Midnight, 128 GB)",
+      "price": "₹53,999",
+      "link": "https://www.flipkart.com/product-url"
+    }
+    // More results...
+  ]
+}</code></pre>
+                </div>
+                
+                <div class="endpoint">
+                    <h3><span class="method get">GET</span> /health</h3>
+                    <p>Check the health status of the API.</p>
+                    
+                    <h5>Response</h5>
+                    <pre><code class="language-json">{
+  "status": "ok",
+  "version": "1.0.0",
+  "timestamp": "2025-05-15T06:32:38.997Z",
+  "cache": {
+    "keys": 5,
+    "stats": {
+      "hits": 10,
+      "misses": 5,
+      "keys": 5,
+      "ksize": 150,
+      "vsize": 25000
+    }
+  }
+}</code></pre>
+                </div>
+                
+                <div class="endpoint">
+                    <h3><span class="method get">GET</span> /admin/cache/clear</h3>
+                    <p>Clear the API cache (admin use only).</p>
+                    
+                    <h5>Response</h5>
+                    <pre><code class="language-json">{
+  "status": "ok",
+  "message": "Cleared 5 cache entries"
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="authentication" role="tabpanel" aria-labelledby="authentication-tab">
+                <h3>Authentication</h3>
+                <p>All API endpoints require authentication using an API key. There are two ways to provide your API key:</p>
+                
+                <h5>1. Query Parameter</h5>
+                <pre><code class="language-http">GET /search?product=iphone&api_key=your-api-key</code></pre>
+                
+                <h5>2. Request Header</h5>
+                <pre><code class="language-http">GET /search?product=iphone
+X-API-Key: your-api-key</code></pre>
+                
+                <div class="alert alert-warning">
+                    <strong>Security Note:</strong> For production use, we recommend using the header method as it's more secure than including the API key in the URL.
+                </div>
+                
+                <h5>Error Response (Invalid API Key)</h5>
+                <pre><code class="language-json">{
+  "error": "Unauthorized",
+  "message": "Invalid or missing API key"
+}</code></pre>
+            </div>
+            
+            <div class="tab-pane fade" id="rate-limiting" role="tabpanel" aria-labelledby="rate-limiting-tab">
+                <h3>Rate Limiting</h3>
+                <p>To prevent abuse, this API implements rate limiting. The default configuration is:</p>
+                <ul>
+                    <li>Window: 15 seconds</li>
+                    <li>Maximum requests per window: 100 requests per IP address</li>
+                </ul>
+                
+                <p>If you exceed the rate limit, you'll receive a 429 Too Many Requests response:</p>
+                <pre><code class="language-json">{
+  "status": 429,
+  "error": "Too many requests, please try again later."
+}</code></pre>
+                
+                <p>The API includes the following headers to help you manage rate limiting:</p>
+                <ul>
+                    <li><code>X-RateLimit-Limit</code>: Maximum number of requests allowed per window</li>
+                    <li><code>X-RateLimit-Remaining</code>: Number of requests remaining in the current window</li>
+                    <li><code>X-RateLimit-Reset</code>: Time when the current window resets (in Unix time)</li>
+                </ul>
+            </div>
+            
+            <div class="tab-pane fade" id="examples" role="tabpanel" aria-labelledby="examples-tab">
+                <h3>Example Usage</h3>
+                
+                <h5>Using cURL</h5>
+                <pre><code class="language-bash">curl "http://localhost:3000/search?product=iphone+13&api_key=your-api-key"</code></pre>
+                
+                <h5>Using cURL with Header Authentication</h5>
+                <pre><code class="language-bash">curl -H "X-API-Key: your-api-key" "http://localhost:3000/search?product=iphone+13"</code></pre>
+                
+                <h5>Using JavaScript Fetch</h5>
+                <pre><code class="language-javascript">const apiKey = 'your-api-key';
+
+fetch(`http://localhost:3000/search?product=iphone+13&api_key=${apiKey}`)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));</code></pre>
+                
+                <h5>Using JavaScript Fetch with Header Authentication</h5>
+                <pre><code class="language-javascript">const apiKey = 'your-api-key';
+
+fetch('http://localhost:3000/search?product=iphone+13', {
+  headers: {
+    'X-API-Key': apiKey
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));</code></pre>
+                
+                <h5>Using Python Requests</h5>
+                <pre><code class="language-python">import requests
+
+api_key = 'your-api-key'
+
+# Method 1: Using query parameter
+response = requests.get(f'http://localhost:3000/search?product=iphone+13&api_key={api_key}')
+data = response.json()
+print(data)
+
+# Method 2: Using header (recommended)
+headers = {'X-API-Key': api_key}
+response = requests.get('http://localhost:3000/search?product=iphone+13', headers=headers)
+data = response.json()
+print(data)</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

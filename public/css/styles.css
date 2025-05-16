@@ -1,0 +1,365 @@
+/* Main styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+
+/* Card styles */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.platform-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.unit-price {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Comparison table styles */
+/* Single comparison card with products stacked vertically */
+.comparison-container {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.comparison-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.comparison-header {
+    background-color: #f1f8ff;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e9ecef;
+    font-weight: 600;
+}
+
+.comparison-product {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+
+.comparison-product:last-child {
+    border-bottom: none;
+}
+
+.comparison-product.best-value {
+    background-color: #ebf7ec;
+}
+
+/* Comparison product layout */
+.product-info {
+    flex: 1;
+    min-width: 200px;
+    padding-right: 15px;
+}
+
+.product-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    white-space: normal;
+    overflow: visible;
+    max-width: 100%;
+    position: relative;
+}
+
+.product-size {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.price-info {
+    flex: 0 0 120px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.product-price {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.unit-price {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.platform-info {
+    flex: 0 0 100px;
+    text-align: center;
+}
+
+.action-btn {
+    flex: 0 0 100px;
+    text-align: right;
+}
+
+.best-value-badge {
+    background-color: #28a745;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.comparison-link {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.comparison-link:hover {
+    text-decoration: underline;
+}
+
+.view-details-btn {
+    padding: 2px 8px;
+    font-size: 0.8rem;
+}
+
+/* Column padding and alignment */
+.comparison-product .col-md-5 {
+    padding: 10px 15px;
+}
+
+.comparison-product .col-md-2:nth-child(2) {
+    text-align: left;
+}
+
+.comparison-product .col-md-2:nth-child(3),
+.comparison-product .col-md-3 {
+    text-align: center;
+}
+
+.comparison-header .col-md-2:nth-child(2) {
+    text-align: left;
+}
+
+.comparison-header .col-md-2:nth-child(3),
+.comparison-header .col-md-3 {
+    text-align: left;
+}
+
+/* Extremely light background colors based on price */
+.best-price {
+    background-color: #f7fff7; /* Extremely light green for best value */
+}
+
+.mid-price {
+    background-color: #fffef7; /* Extremely light yellow for middle value */
+}
+
+.highest-price {
+    background-color: #fff7f7; /* Extremely light red for highest price */
+}
+
+/* Improve mobile layout */
+@media (max-width: 767px) {
+    .comparison-product {
+        padding: 15px 10px;
+    }
+    
+    .comparison-header {
+        padding: 10px;
+        display: none; /* Hide header on mobile for more space */
+    }
+    
+    .product-title {
+        margin-bottom: 12px;
+        font-size: 1.1rem;
+    }
+    
+    /* Better mobile layout for comparison products */
+    .comparison-product .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .comparison-product .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .comparison-product .col-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        text-align: center;
+    }
+    
+    /* Make sure action button is visible */
+    .comparison-product .btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    
+    /* Price alignment on mobile */
+    .comparison-product .col-4:nth-child(2) {
+        text-align: left;
+    }
+}
+
+.product-size {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.price-info {
+    flex: 0 0 120px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.product-price {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.unit-price {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.platform-info {
+    flex: 0 0 100px;
+    text-align: center;
+}
+
+.action-btn {
+    flex: 0 0 100px;
+    text-align: right;
+}
+
+.best-value-badge {
+    background-color: #28a745;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.comparison-link {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.comparison-link:hover {
+    text-decoration: underline;
+}
+
+.view-details-btn {
+    padding: 2px 8px;
+    font-size: 0.8rem;
+}
+
+/* Price category styles */
+.cheapest {
+    background-color: #ebf7ec;
+    border-color: #c3e6cb;
+}
+
+.medium-price {
+    background-color: #fff9eb;
+    border-color: #ffeeba;
+}
+
+.expensive {
+    background-color: #fdebed;
+    border-color: #f5c6cb;
+}
+
+/* Section styles */
+.section-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    color: #343a40;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Search container */
+.search-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+/* Product card styles */
+.result-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-attributes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.card-title {
+    min-height: 50px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Platform icon */
+.platform-icon {
+    height: 20px;
+    width: auto;
+    margin-right: 5px;
+}
