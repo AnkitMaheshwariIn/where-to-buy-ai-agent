@@ -1,4 +1,4 @@
-# Where to Buy AI Agent
+# Where to Buy (AI Agent)
 
 A full-stack web application that helps users find the best online platforms to purchase products in India. The app aggregates real-time data from top e-commerce platforms (Amazon, Flipkart, Meesho, Blinkit, Zepto) and presents users with direct links, prices, and availability. The project emphasizes trust and usability by using official SVG platform logos and avoids mock data, always showing real results or helpful suggestions if nothing is found.
 
